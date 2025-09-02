@@ -1,12 +1,12 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import '../controller/signup_controller.dart';
 import 'login_screen.dart';
-import 'otp_screen.dart';
 
 class SignupScreen extends StatelessWidget {
   final SignupController controller = Get.put(SignupController());
+
   SignupScreen({super.key});
 
   @override
@@ -14,12 +14,14 @@ class SignupScreen extends StatelessWidget {
     return Scaffold(
       body: SafeArea(
         child: SingleChildScrollView(
-          padding: EdgeInsets.all( 15),
-          child:  Column(
+          padding: const EdgeInsets.all(15),
+          child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Image.asset("assets/images/chat.png"),
-              SizedBox(height: 20,),
+              const SizedBox(height: 20),
+
+              // Name field
               TextFormField(
                 controller: controller.nameController,
                 decoration: InputDecoration(
@@ -30,7 +32,9 @@ class SignupScreen extends StatelessWidget {
                   ),
                 ),
               ),
-              SizedBox(height: 10,),
+              const SizedBox(height: 10),
+
+              // Email field
               TextFormField(
                 controller: controller.emailController,
                 decoration: InputDecoration(
@@ -41,87 +45,113 @@ class SignupScreen extends StatelessWidget {
                   ),
                 ),
               ),
-              SizedBox(height: 10,),
-              Obx( () =>
-                  TextFormField(
-                    controller: controller.passwordController,
-                    obscureText: !controller.isPasswordVisible.value,
-                    decoration: InputDecoration(
-                      hintText: "Password",
-                      labelText: "Password",
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10),
+              const SizedBox(height: 10),
+
+              // Password field
+              Obx(
+                    () => TextFormField(
+                  controller: controller.passwordController,
+                  obscureText: !controller.isPasswordVisible.value,
+                  decoration: InputDecoration(
+                    hintText: "Password",
+                    labelText: "Password",
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    suffixIcon: IconButton(
+                      icon: Icon(
+                        controller.isPasswordVisible.value
+                            ? Icons.visibility
+                            : Icons.visibility_off,
                       ),
-                      suffixIcon: IconButton(
-                          icon: Icon(controller.isPasswordVisible.value ?
-                          Icons.visibility : Icons.visibility_off
-                          ),
-                          onPressed: () {
-                            controller.togglePasswordVisibility();
-                          }
-                      ),
+                      onPressed: controller.togglePasswordVisibility,
                     ),
                   ),
+                ),
               ),
-              SizedBox(height: 10,),
-              Obx( () =>
-                  TextFormField(
-                    controller: controller.confirmPasswordController,
-                    obscureText: !controller.isConfirmPasswordVisible.value,
-                    decoration: InputDecoration(
-                      hintText: "Confirm Password",
-                      labelText: "Confirm Password",
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10),
+              const SizedBox(height: 10),
+
+              // Confirm Password
+              Obx(
+                    () => TextFormField(
+                  controller: controller.confirmPasswordController,
+                  obscureText: !controller.isConfirmPasswordVisible.value,
+                  decoration: InputDecoration(
+                    hintText: "Confirm Password",
+                    labelText: "Confirm Password",
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    suffixIcon: IconButton(
+                      icon: Icon(
+                        controller.isConfirmPasswordVisible.value
+                            ? Icons.visibility
+                            : Icons.visibility_off,
                       ),
-                      suffixIcon: IconButton(
-                          icon: Icon(controller.isConfirmPasswordVisible.value ?
-                          Icons.visibility : Icons.visibility_off
-                          ),
-                          onPressed: () {
-                            controller.toggleConfirmPasswordVisibility();
-                          }
-                      ),
+                      onPressed: controller.toggleConfirmPasswordVisibility,
                     ),
                   ),
+                ),
               ),
-              SizedBox(height: 30,),
-              Center(
-                child: ElevatedButton(onPressed: (){
-                  controller.registerUser();
-                },
+              const SizedBox(height: 30),
+
+              // Sign Up Button / Loader
+              Obx(() {
+                return controller.isLoading.value
+                    ? Center(
+                  child: SpinKitWave(
+                    color: Colors.green,
+                  ),
+                )
+                    : Center(
+                  child: ElevatedButton(
+                    onPressed: controller.registerUser,
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: Color(0xFF7B2CFA),
+                      backgroundColor: const Color(0xFF7B2CFA),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(10),
                       ),
-                      padding: EdgeInsets.symmetric(horizontal: 50, vertical: 15),
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 50, vertical: 15),
                     ),
-                    child: Text("Signed Up",style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 16,
-                      fontWeight: FontWeight.w400,
-                    ),)),
-              ),
-              SizedBox(height: 20,),
-              Center(
-                child: Text("OR",style: TextStyle(
-                  color: Colors.black,
-                  fontSize: 22,
-                  fontWeight: FontWeight.w400,
-                ),),
-              ),
-              SizedBox(height: 20,),
-              GestureDetector(
-                onTap: (){
-                  Get.to(()=>LoginScreen());
-                },
-                child: Center(
-                  child: Text("Sign In",style: TextStyle(
-                    color: Colors.red,
+                    child: const Text(
+                      "Sign Up",
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 16,
+                        fontWeight: FontWeight.w400,
+                      ),
+                    ),
+                  ),
+                );
+              }),
+              const SizedBox(height: 20),
+
+              // OR divider
+              const Center(
+                child: Text(
+                  "OR",
+                  style: TextStyle(
+                    color: Colors.black,
                     fontSize: 22,
                     fontWeight: FontWeight.w400,
-                  ),),
+                  ),
+                ),
+              ),
+              const SizedBox(height: 10),
+
+              // Go to Login
+              GestureDetector(
+                onTap: () => Get.to(() => LoginScreen()),
+                child: const Center(
+                  child: Text(
+                    "Sign In",
+                    style: TextStyle(
+                      color: Colors.red,
+                      fontSize: 22,
+                      fontWeight: FontWeight.w400,
+                    ),
+                  ),
                 ),
               ),
             ],
