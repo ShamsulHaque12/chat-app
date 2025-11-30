@@ -2,15 +2,11 @@ class HomeModel {
   final String id;
   final String name;
   final String imagePath;
-  final String membar;
-  final String button;
 
   HomeModel({
     required this.id,
     required this.name,
     required this.imagePath,
-    required this.membar,
-    required this.button,
   });
 
   // Convert JSON to HomeModel
@@ -19,8 +15,6 @@ class HomeModel {
       id: json['id'] as String? ?? '',
       name: json['name'] as String? ?? 'Unknown',
       imagePath: json['imagePath'] as String? ?? 'assets/default_image.png',
-      membar: json['membar'] as String? ?? '',
-      button: json['button'] as String? ?? 'Button',
     );
   }
 
@@ -30,8 +24,6 @@ class HomeModel {
       'id': id,
       'name': name,
       'imagePath': imagePath,
-      'membar': membar,
-      'button': button,
     };
   }
 }

@@ -14,7 +14,7 @@ class CustomTextField extends StatefulWidget {
   final bool? readOnly;
   final bool isSuffixIconOnTap;
   final bool isDropdown;
-  final bool isPassword; // ✅ New parameter
+  final bool isPassword;
   final String? controllerTag;
   final List<String>? dropdownItems;
   final Widget? suffixIcon;
@@ -93,6 +93,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
                 color: widget.textColor ?? Colors.black,
               ),
               decoration: InputDecoration(
+                contentPadding: EdgeInsets.all(5),
                 hintText: widget.hintText ?? "",
                 hintStyle: TextStyle(
                   fontSize: 14.sp,

@@ -21,6 +21,7 @@ class ProfileScreen extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: isDark ? Colors.black : Colors.white,
         elevation: 0,
+        scrolledUnderElevation: 0,
         title: Text(
           "Profile",
           style: TextStyle(
