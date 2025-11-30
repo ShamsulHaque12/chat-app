@@ -31,7 +31,7 @@ class LoginScreen extends StatelessWidget {
                   ),
                 ),
               ),
-              SizedBox(height: 10),
+              SizedBox(height: 20),
               Obx(
                 () => TextFormField(
                   controller: controller.passwordController,

@@ -32,7 +32,7 @@ class SignupScreen extends StatelessWidget {
                   ),
                 ),
               ),
-              const SizedBox(height: 10),
+              const SizedBox(height: 20),
 
               // Email field
               TextFormField(
@@ -45,7 +45,7 @@ class SignupScreen extends StatelessWidget {
                   ),
                 ),
               ),
-              const SizedBox(height: 10),
+              const SizedBox(height: 20),
 
               // Password field
               Obx(
@@ -69,7 +69,7 @@ class SignupScreen extends StatelessWidget {
                   ),
                 ),
               ),
-              const SizedBox(height: 10),
+              const SizedBox(height: 20),
 
               // Confirm Password
               Obx(
