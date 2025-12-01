@@ -1,15 +1,14 @@
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
 
-class UnreadChat extends StatelessWidget {
-  const UnreadChat({super.key});
+class GroupList extends StatelessWidget {
+  const GroupList({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return  Column(
+    return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text("Unread Chat"),
+        Text("Group List"),
       ],
     );
   }

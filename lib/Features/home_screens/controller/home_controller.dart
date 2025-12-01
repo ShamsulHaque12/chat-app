@@ -41,11 +41,13 @@ class HomeController extends GetxController {
   }
 
   RxInt selectedIndex = 0.obs;
+  void changeTab(int index) {
+    selectedIndex.value = index;
+  }
 
   final screens = [
     AllChats(),
     UnreadChat(),
-    ReadChat(),
   ];
 
 }

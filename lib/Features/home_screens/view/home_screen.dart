@@ -3,6 +3,7 @@ import 'package:chat_app/core/custom_widgets/custom_text_field.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:get/get.dart';
 
 import '../controller/home_controller.dart';
@@ -41,13 +42,13 @@ class HomeScreen extends StatelessWidget {
                   color: Colors.grey[300],
                   borderRadius: BorderRadius.circular(10),
                 ),
-                child: Icon(Icons.add),
+                child: Icon(Icons.notification_important_rounded,color: Colors.green,),
               ),
             ),
           ),
         ],
       ),
-      body: SingleChildScrollView(
+      body: Padding(
         padding: EdgeInsets.all(15),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -72,11 +73,12 @@ class HomeScreen extends StatelessWidget {
                   SizedBox(height: 5.h),
                   Obx(
                         () {
-                      if (controller.isLoading.value) {
-                        return Center(
-                          child: CircularProgressIndicator(color: Colors.white),
-                        );
-                      }
+                          if(controller.isLoading.value){
+                            return Center(child: SpinKitWave(
+                              color: Colors.green,
+                              size: 40.0,
+                            ));
+                          }
                       // Story list
                       return SizedBox(
                         height: 75.h,
@@ -160,6 +162,75 @@ class HomeScreen extends StatelessWidget {
               ),
             ),
             SizedBox(height: 10.h),
+            Obx(() {
+              return Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  // tab 1
+                  Expanded(
+                    child: GestureDetector(
+                      onTap: () => controller.changeTab(0),
+                      child: Container(
+                        padding: EdgeInsets.symmetric(vertical: 10.h),
+                        decoration: BoxDecoration(
+                          color: controller.selectedIndex.value == 0
+                              ? Colors.green
+                              : Colors.grey[300],
+                          borderRadius: BorderRadius.circular(10.r),
+                        ),
+                        alignment: Alignment.center,
+                        child: Text(
+                          "All Chats",
+                          style: TextStyle(
+                            color: controller.selectedIndex.value == 0
+                                ? Colors.white
+                                : Colors.black,
+                            fontSize: 16.sp,
+                            fontWeight: FontWeight.w600,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+
+                  SizedBox(width: 10.w),
+
+                  // tab 2
+                  Expanded(
+                    child: GestureDetector(
+                      onTap: () => controller.changeTab(1),
+                      child: Container(
+                        padding: EdgeInsets.symmetric(vertical: 10.h),
+                        decoration: BoxDecoration(
+                          color: controller.selectedIndex.value == 1
+                              ? Colors.green
+                              : Colors.grey[300],
+                          borderRadius: BorderRadius.circular(10.r),
+                        ),
+                        alignment: Alignment.center,
+                        child: Text(
+                          "Unread",
+                          style: TextStyle(
+                            color: controller.selectedIndex.value == 1
+                                ? Colors.white
+                                : Colors.black,
+                            fontSize: 16.sp,
+                            fontWeight: FontWeight.w600,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              );
+            }),
+            SizedBox(height: 10.h),
+            Expanded(
+              child: Obx(() {
+                return controller.screens[controller.selectedIndex.value];
+              }),
+            ),
+
           ],
         ),
       ),
