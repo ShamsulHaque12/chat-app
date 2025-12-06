@@ -40,7 +40,8 @@ class MyApp extends StatelessWidget {
         darkTheme: ThemeData.dark(),
         themeMode: themeController.themeMode.value,
         title: 'Chat App',
-        home: BottomNavBarScreen(),
+        // home: BottomNavBarScreen(),
+        home: LoginScreen(),
         builder: EasyLoading.init(),
       ),
     );

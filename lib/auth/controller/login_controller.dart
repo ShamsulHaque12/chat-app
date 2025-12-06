@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 
+import '../../Features/bottom_nav_bar/screens/bottom_nav_bar_screen.dart';
 import '../../Features/home_screens/view/home_screen.dart';
 import '../../utills/api_config.dart';
 
@@ -48,7 +49,7 @@ class LoginController extends GetxController {
           colorText: Colors.white,
           barBlur: 1.5,
         );
-        Get.offAll(() => HomeScreen());
+        Get.offAll(() => BottomNavBarScreen());
       } else {
         Get.snackbar(
           "Error",
