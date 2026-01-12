@@ -613,7 +613,7 @@ class MessageBubble extends StatelessWidget {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Container(
+                          SizedBox(
                             height: 20,
                             child: CustomPaint(
                               painter: AudioWavePainter(

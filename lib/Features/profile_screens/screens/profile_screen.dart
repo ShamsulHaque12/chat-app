@@ -108,7 +108,7 @@ class ProfileScreen extends StatelessWidget {
                      return Switch(
                         value: controller.notification.value,
                         onChanged: controller.notificationSwitch,
-                        activeColor: Colors.green,
+                        activeThumbColor: Colors.green,
                       );
                     },
                   )

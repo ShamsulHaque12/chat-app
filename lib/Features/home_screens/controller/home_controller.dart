@@ -1,12 +1,9 @@
-import 'dart:developer';
 
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 
-import '../../../utills/api_config.dart';
 import '../model/home_model.dart';
 import '../widgets/all_chats.dart';
-import '../widgets/read_chat.dart';
 import '../widgets/unread_chat.dart';
 
 class HomeController extends GetxController {

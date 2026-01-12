@@ -17,7 +17,7 @@ class CustomButton extends StatelessWidget {
   final double iconSpacing;
 
   const CustomButton({
-    Key? key,
+    super.key,
     required this.text,
     this.onTap,
     this.radius = 10,
@@ -31,7 +31,7 @@ class CustomButton extends StatelessWidget {
     this.prefixIcon,
     this.suffixIcon,
     this.iconSpacing = 8.0,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

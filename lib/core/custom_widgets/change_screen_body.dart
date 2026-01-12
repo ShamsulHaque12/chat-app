@@ -7,10 +7,10 @@ class ChangeScreenBody extends StatelessWidget {
   final List<Widget> screens;
 
   const ChangeScreenBody({
-    Key? key,
+    super.key,
     required this.selectedIndex,
     required this.screens,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

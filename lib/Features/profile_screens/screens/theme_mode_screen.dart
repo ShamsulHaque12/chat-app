@@ -67,7 +67,7 @@ class ThemeModeScreen extends StatelessWidget {
                     ),
                     Obx(
                           () => CupertinoSwitch(
-                        activeColor: Colors.green,
+                        activeTrackColor: Colors.green,
                         value: themeController.themeMode.value == ThemeMode.system,
                         onChanged: (value) {
                           if (value) {
@@ -108,7 +108,7 @@ class ThemeModeScreen extends StatelessWidget {
                     ),
                     Obx(
                           () => CupertinoSwitch(
-                        activeColor: Colors.green,
+                        activeTrackColor: Colors.green,
                         value: themeController.themeMode.value == ThemeMode.dark,
                         onChanged: (value) {
                           if (value) {

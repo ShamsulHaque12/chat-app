@@ -1,14 +1,11 @@
+import 'package:chat_app/Features/auth_screens/screens/log_in_screens.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_instance/src/extension_instance.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
-
-import 'Features/bottom_nav_bar/screens/bottom_nav_bar_screen.dart';
-import 'Features/home_screens/view/home_screen.dart';
 import 'Features/profile_screens/controller/theme_controller.dart';
-import 'auth/views/login_screen.dart';
 
 final ThemeController themeController = Get.put(ThemeController());
 void main() {
@@ -41,7 +38,7 @@ class MyApp extends StatelessWidget {
         themeMode: themeController.themeMode.value,
         title: 'Chat App',
         // home: BottomNavBarScreen(),
-        home: LoginScreen(),
+        home: LogInScreens(),
         builder: EasyLoading.init(),
       ),
     );

@@ -3,6 +3,5 @@ class ApiConfig {
   static String register = ("$baseUrl/users/register");
   static String login = ("$baseUrl/auth/login");
   static String verify = ("$baseUrl/users/verify-otp");
-
   static String group = ("$baseUrl/groups");
 }

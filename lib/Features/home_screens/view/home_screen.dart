@@ -1,6 +1,4 @@
-import 'package:chat_app/Features/home_screens/view/personal_message.dart';
 import 'package:chat_app/core/custom_widgets/custom_text_field.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -21,33 +19,42 @@ class HomeScreen extends StatelessWidget {
         backgroundColor: isDark ? Colors.black : Colors.white,
         elevation: 0,
         scrolledUnderElevation: 0,
-        title: Text(
-          "Chats",
-          style: TextStyle(
-            color: isDark ? Colors.white : Colors.black,
-            fontSize: 25.sp,
-            fontWeight: FontWeight.bold,
-          ),
+        automaticallyImplyLeading: false,
+
+        title: Row(
+          children: [
+            CircleAvatar(
+              radius: 21.r,
+              backgroundImage: NetworkImage(
+                "https://i.pravatar.cc/150",
+              ),
+            ),
+          ],
         ),
+
         actions: [
           Padding(
             padding: const EdgeInsets.only(right: 15),
             child: GestureDetector(
               onTap: () {
-                // Get.to(() => PersonalMessage());
+                // notification action
               },
               child: Container(
-                padding: EdgeInsets.all(10),
+                padding: const EdgeInsets.all(10),
                 decoration: BoxDecoration(
                   color: Colors.grey[300],
                   borderRadius: BorderRadius.circular(10),
                 ),
-                child: Icon(Icons.notification_important_rounded,color: Colors.green,),
+                child: const Icon(
+                  Icons.notification_important_rounded,
+                  color: Colors.green,
+                ),
               ),
             ),
           ),
         ],
       ),
+
       body: Padding(
         padding: EdgeInsets.all(15),
         child: Column(
@@ -71,83 +78,80 @@ class HomeScreen extends StatelessWidget {
                     ),
                   ),
                   SizedBox(height: 5.h),
-                  Obx(
-                        () {
-                          if(controller.isLoading.value){
-                            return Center(child: SpinKitWave(
-                              color: Colors.green,
-                              size: 40.0,
-                            ));
-                          }
-                      // Story list
-                      return SizedBox(
-                        height: 75.h,
-                        child: ListView.builder(
-                          scrollDirection: Axis.horizontal,
-                          itemCount: controller.story.length + 1,
-                          itemBuilder: (context, index) {
-                            if (index == 0) {
-                              // Add Icon
-                              return GestureDetector(
-                                onTap: () {
-                                  // Add story logic
-                                  print("Add story clicked");
-                                },
-                                child: Container(
-                                  width: 60.w,
-                                  margin: EdgeInsets.only(right: 10.w),
-                                  child: Column(
-                                    children: [
-                                      CircleAvatar(
-                                        radius: 30.r,
-                                        backgroundColor: Colors.white,
-                                        child: Icon(
-                                          Icons.add,
-                                          color: Colors.green,
-                                          size: 30.sp,
-                                        ),
+                  Obx(() {
+                    if (controller.isLoading.value) {
+                      return Center(
+                        child: SpinKitWave(color: Colors.green, size: 40.0),
+                      );
+                    }
+                    // Story list
+                    return SizedBox(
+                      height: 75.h,
+                      child: ListView.builder(
+                        scrollDirection: Axis.horizontal,
+                        itemCount: controller.story.length + 1,
+                        itemBuilder: (context, index) {
+                          if (index == 0) {
+                            // Add Icon
+                            return GestureDetector(
+                              onTap: () {
+                                // Add story logic
+                                print("Add story clicked");
+                              },
+                              child: Container(
+                                width: 60.w,
+                                margin: EdgeInsets.only(right: 10.w),
+                                child: Column(
+                                  children: [
+                                    CircleAvatar(
+                                      radius: 30.r,
+                                      backgroundColor: Colors.white,
+                                      child: Icon(
+                                        Icons.add,
+                                        color: Colors.green,
+                                        size: 30.sp,
                                       ),
-                                      SizedBox(height: 5.h),
-                                      Text(
-                                        "Add",
-                                        style: TextStyle(
-                                          color: Colors.white,
-                                          fontSize: 12.sp,
-                                        ),
-                                      )
-                                    ],
-                                  ),
-                                ),
-                              );
-                            }
-                            // Story items
-                            final story = controller.story[index - 1];
-                            return Container(
-                              width: 60.w,
-                              margin: EdgeInsets.only(right: 10.w),
-                              child: Column(
-                                children: [
-                                  CircleAvatar(
-                                    radius: 30.r,
-                                    backgroundImage: AssetImage(story.imagePath),
-                                  ),
-                                  SizedBox(height: 5.h),
-                                  Text(
-                                    story.name,
-                                    style: TextStyle(
-                                      color: Colors.white,
-                                      fontSize: 12.sp,
                                     ),
-                                    overflow: TextOverflow.ellipsis,
-                                  ),
-                                ],
+                                    SizedBox(height: 5.h),
+                                    Text(
+                                      "Add",
+                                      style: TextStyle(
+                                        color: Colors.white,
+                                        fontSize: 12.sp,
+                                      ),
+                                    ),
+                                  ],
+                                ),
                               ),
                             );
-                          },
-                        ),
-                      );
-                    },
-                  ),
+                          }
+                          // Story items
+                          final story = controller.story[index - 1];
+                          return Container(
+                            width: 60.w,
+                            margin: EdgeInsets.only(right: 10.w),
+                            child: Column(
+                              children: [
+                                CircleAvatar(
+                                  radius: 30.r,
+                                  backgroundImage: AssetImage(story.imagePath),
+                                ),
+                                SizedBox(height: 5.h),
+                                Text(
+                                  story.name,
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 12.sp,
+                                  ),
+                                  overflow: TextOverflow.ellipsis,
+                                ),
+                              ],
+                            ),
+                          );
+                        },
+                      ),
+                    );
+                  }),
                   // SizedBox(height: 8.h),
                   CustomTextField(
                     height: 30.h,
@@ -156,7 +160,10 @@ class HomeScreen extends StatelessWidget {
                     hintText: 'Search',
                     hintTextColor: Colors.grey,
                     textColor: Colors.black,
-                    borderSide: BorderSide(color: Colors.transparent, width: 1.0),
+                    borderSide: BorderSide(
+                      color: Colors.transparent,
+                      width: 1.0,
+                    ),
                   ),
                 ],
               ),
@@ -230,7 +237,6 @@ class HomeScreen extends StatelessWidget {
                 return controller.screens[controller.selectedIndex.value];
               }),
             ),
-
           ],
         ),
       ),

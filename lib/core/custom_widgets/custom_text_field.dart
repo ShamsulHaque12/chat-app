@@ -24,7 +24,7 @@ class CustomTextField extends StatefulWidget {
   final bool? obscureText;
 
   const CustomTextField({
-    Key? key,
+    super.key,
     this.textEditingController,
     this.titleText,
     this.hintText,
@@ -44,7 +44,7 @@ class CustomTextField extends StatefulWidget {
     this.borderSide,
     this.maxLines = 1,
     this.obscureText,
-  }) : super(key: key);
+  });
 
   @override
   State<CustomTextField> createState() => _CustomTextFieldState();

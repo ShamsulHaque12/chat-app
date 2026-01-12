@@ -1,9 +1,5 @@
-import 'dart:convert';
 
-import 'package:http/http.dart' as http;
 
-import '../../auth/model/user_model.dart';
-import '../../utills/api_config.dart';
 
 class ApiServices {
   // Future<http.Response> registerUserToApi(UserModel data) async {
