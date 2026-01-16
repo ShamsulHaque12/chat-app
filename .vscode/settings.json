@@ -1,3 +1,4 @@
 {
-    "cmake.sourceDirectory": "D:/New folder/chat-app/linux"
+    "cmake.sourceDirectory": "D:/New folder/chat-app/linux",
+    "java.configuration.updateBuildConfiguration": "interactive"
 }

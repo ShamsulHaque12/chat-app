@@ -1,4 +1,5 @@
 import 'package:chat_app/Features/auth_screens/screens/log_in_screens.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -6,10 +7,18 @@ import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_instance/src/extension_instance.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'Features/profile_screens/controller/theme_controller.dart';
+import 'firebase_options.dart';
 
 final ThemeController themeController = Get.put(ThemeController());
-void main() {
-  runApp(MyApp());
+
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -27,6 +36,8 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    configEasyLoading();
+
     return ScreenUtilInit(
       designSize: const Size(360, 640),
       minTextAdapt: true,
@@ -37,7 +48,6 @@ class MyApp extends StatelessWidget {
         darkTheme: ThemeData.dark(),
         themeMode: themeController.themeMode.value,
         title: 'Chat App',
-        // home: BottomNavBarScreen(),
         home: LogInScreens(),
         builder: EasyLoading.init(),
       ),

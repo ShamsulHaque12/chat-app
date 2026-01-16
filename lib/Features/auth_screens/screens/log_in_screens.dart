@@ -1,4 +1,4 @@
-import 'package:chat_app/Features/home_screens/view/home_screen.dart';
+import 'package:chat_app/Features/bottom_nav_bar/screens/bottom_nav_bar_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
@@ -23,7 +23,8 @@ class LogInScreens extends StatelessWidget {
               Center(
                 child: GestureDetector(
                   onTap: () {
-                    Get.to(() => HomeScreen());
+                    // Get.to(() => HomeScreen());
+                    Get.to(()=>BottomNavBarScreen());
                   },
                   child: Container(
                     height: 50.h,

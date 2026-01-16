@@ -17,13 +17,17 @@ class ContractList extends StatelessWidget {
       backgroundColor: isDark ? Colors.black : Colors.white,
       appBar: AppBar(
         backgroundColor: isDark ? Colors.black : Colors.white,
+        automaticallyImplyLeading: false,
         elevation: 0,
         scrolledUnderElevation: 0,
-        title: Text("Contracts",style: TextStyle(
-          color: isDark ? Colors.white : Colors.black,
-          fontSize: 20.sp,
-          fontWeight: FontWeight.bold,
-        ),),
+        title: Text(
+          "Contracts",
+          style: TextStyle(
+            color: isDark ? Colors.white : Colors.black,
+            fontSize: 20.sp,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
         actions: [
           Padding(
             padding: const EdgeInsets.only(right: 15),
@@ -37,7 +41,7 @@ class ContractList extends StatelessWidget {
                   color: Colors.grey[300],
                   borderRadius: BorderRadius.circular(10),
                 ),
-                child: Icon(Icons.add,color: Colors.green,),
+                child: Icon(Icons.add, color: Colors.green),
               ),
             ),
           ),

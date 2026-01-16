@@ -20,6 +20,7 @@ class ProfileScreen extends StatelessWidget {
       backgroundColor: isDark ? Colors.black : Colors.white,
       appBar: AppBar(
         backgroundColor: isDark ? Colors.black : Colors.white,
+        automaticallyImplyLeading: false,
         elevation: 0,
         scrolledUnderElevation: 0,
         title: Text(
@@ -70,7 +71,7 @@ class ProfileScreen extends StatelessWidget {
               image: AppIcons.edit,
               imageIcone: AppIcons.arrow,
               onPressed: () {
-                Get.to(()=>EditProfileScreen());
+                Get.to(() => EditProfileScreen());
               },
             ),
             SizedBox(height: 10.h),
@@ -79,39 +80,42 @@ class ProfileScreen extends StatelessWidget {
               image: AppIcons.lock,
               imageIcone: AppIcons.arrow,
               onPressed: () {
-                Get.to(()=>ChangePasswordScreen());
+                Get.to(() => ChangePasswordScreen());
               },
             ),
             SizedBox(height: 10.h),
             Container(
               padding: EdgeInsets.all(8),
               decoration: BoxDecoration(
-                  color: isDark ? Colors.grey.shade800 : Colors.white,
-                  borderRadius: BorderRadius.circular(10.r),
-                  border: Border.all(
-                      color: Colors.green,
-                      width: 2
-                  )
+                color: isDark ? Colors.grey.shade800 : Colors.white,
+                borderRadius: BorderRadius.circular(10.r),
+                border: Border.all(color: Colors.green, width: 2),
               ),
               child: Row(
                 children: [
-                  SvgPicture.asset(AppIcons.notification,height: 20.h,width: 20.w,color: Colors.green,),
+                  SvgPicture.asset(
+                    AppIcons.notification,
+                    height: 20.h,
+                    width: 20.w,
+                    color: Colors.green,
+                  ),
                   SizedBox(width: 10.w),
-                  Text("Notification",style: TextStyle(
-                    color: isDark ? Colors.white : Colors.black,
-                    fontSize: 18.sp,
-                    fontWeight: FontWeight.bold,
-                  ),),
+                  Text(
+                    "Notification",
+                    style: TextStyle(
+                      color: isDark ? Colors.white : Colors.black,
+                      fontSize: 18.sp,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
                   Spacer(),
-                  Obx(
-                    (){
-                     return Switch(
-                        value: controller.notification.value,
-                        onChanged: controller.notificationSwitch,
-                        activeThumbColor: Colors.green,
-                      );
-                    },
-                  )
+                  Obx(() {
+                    return Switch(
+                      value: controller.notification.value,
+                      onChanged: controller.notificationSwitch,
+                      activeThumbColor: Colors.green,
+                    );
+                  }),
                 ],
               ),
             ),
@@ -121,7 +125,7 @@ class ProfileScreen extends StatelessWidget {
               image: AppIcons.theme,
               imageIcone: AppIcons.arrow,
               onPressed: () {
-                Get.to(()=>ThemeModeScreen());
+                Get.to(() => ThemeModeScreen());
               },
             ),
             SizedBox(height: 10.h),
@@ -142,24 +146,29 @@ class ProfileScreen extends StatelessWidget {
               child: Container(
                 padding: EdgeInsets.all(8),
                 decoration: BoxDecoration(
-                    color: isDark ? Colors.grey.shade800 : Colors.white,
-                    borderRadius: BorderRadius.circular(10.r),
-                    border: Border.all(
-                        color: Colors.red,
-                        width: 2
-                    )
+                  color: isDark ? Colors.grey.shade800 : Colors.white,
+                  borderRadius: BorderRadius.circular(10.r),
+                  border: Border.all(color: Colors.red, width: 2),
                 ),
                 child: Row(
                   children: [
-                    Image.asset(AppIcons.logout,height: 25.h,width: 25.w,),
+                    Image.asset(AppIcons.logout, height: 25.h, width: 25.w),
                     SizedBox(width: 10.w),
-                    Text("Logout",style: TextStyle(
-                      color: Colors.red,
-                      fontSize: 18.sp,
-                      fontWeight: FontWeight.bold,
-                    ),),
+                    Text(
+                      "Logout",
+                      style: TextStyle(
+                        color: Colors.red,
+                        fontSize: 18.sp,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
                     Spacer(),
-                    SvgPicture.asset(AppIcons.arrow,height: 25.h,width: 25.w,color: Colors.red,),
+                    SvgPicture.asset(
+                      AppIcons.arrow,
+                      height: 25.h,
+                      width: 25.w,
+                      color: Colors.red,
+                    ),
                   ],
                 ),
               ),
@@ -169,6 +178,7 @@ class ProfileScreen extends StatelessWidget {
       ),
     );
   }
+
   void _showSuccessDialog(BuildContext context) {
     final isDark = Theme.of(context).brightness == Brightness.dark;
     showDialog(
@@ -202,7 +212,10 @@ class ProfileScreen extends StatelessWidget {
               Text(
                 "Are you sure you want to logout from the application?!",
                 textAlign: TextAlign.center,
-                style: TextStyle(fontSize: 14.sp,color: isDark ? Colors.white : Colors.black),
+                style: TextStyle(
+                  fontSize: 14.sp,
+                  color: isDark ? Colors.white : Colors.black,
+                ),
               ),
               SizedBox(height: 10.h),
               Row(
@@ -216,10 +229,7 @@ class ProfileScreen extends StatelessWidget {
                       backgroundColor: Colors.white,
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(10.r),
-                        side: BorderSide(
-                          color: Colors.green,
-                          width: 1.0,
-                        ),
+                        side: BorderSide(color: Colors.green, width: 1.0),
                       ),
                     ),
                     child: Text(
@@ -248,6 +258,7 @@ class ProfileScreen extends StatelessWidget {
       },
     );
   }
+
   void _showDeleteDialog(BuildContext context) {
     final isDark = Theme.of(context).brightness == Brightness.dark;
     showDialog(
@@ -281,7 +292,10 @@ class ProfileScreen extends StatelessWidget {
               Text(
                 "Are you sure you want to Delete from the application?!",
                 textAlign: TextAlign.center,
-                style: TextStyle(fontSize: 14.sp, color: isDark ? Colors.white : Colors.black),
+                style: TextStyle(
+                  fontSize: 14.sp,
+                  color: isDark ? Colors.white : Colors.black,
+                ),
               ),
               SizedBox(height: 10.h),
               Row(
@@ -295,10 +309,7 @@ class ProfileScreen extends StatelessWidget {
                       backgroundColor: Colors.white,
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(10.r),
-                        side: BorderSide(
-                          color: Colors.green,
-                          width: 1.0,
-                        ),
+                        side: BorderSide(color: Colors.green, width: 1.0),
                       ),
                     ),
                     child: Text(
@@ -327,7 +338,6 @@ class ProfileScreen extends StatelessWidget {
       },
     );
   }
-
 }
 
 class ProfileItem extends StatelessWidget {
@@ -354,25 +364,30 @@ class ProfileItem extends StatelessWidget {
         decoration: BoxDecoration(
           color: isDark ? Colors.grey.shade800 : Colors.white,
           borderRadius: BorderRadius.circular(10.r),
-          border: Border.all(
-            color: Colors.green,
-            width: 2
-          )
+          border: Border.all(color: Colors.green, width: 2),
         ),
         child: Row(
           children: [
-            SvgPicture.asset(image,height: 20.h,width: 20.w,color: Colors.green,),
+            SvgPicture.asset(
+              image,
+              height: 20.h,
+              width: 20.w,
+              color: Colors.green,
+            ),
             SizedBox(width: 10.w),
-            Text(label,style: TextStyle(
-              color: isDark ? Colors.white : Colors.black,
-              fontSize: 18.sp,
-              fontWeight: FontWeight.bold,
-            ),),
+            Text(
+              label,
+              style: TextStyle(
+                color: isDark ? Colors.white : Colors.black,
+                fontSize: 18.sp,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
             Spacer(),
-            SvgPicture.asset(imageIcone,height: 25.h,width: 25.w,),
+            SvgPicture.asset(imageIcone, height: 25.h, width: 25.w),
           ],
         ),
-      )
+      ),
     );
   }
 }
